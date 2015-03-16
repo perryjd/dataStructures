@@ -14,12 +14,11 @@ class DequeStack
 		left = 0;
 		right = -1;
 		nItems = 0;
-		top = 0;
+		top = -1;
 	}
 
 	public void insertLeft(long j)
 	{
-		System.out.println("Trying to call insertLeft()");
 		if (left == 0)
 			left = maxSize;
 		queArray[--left] = j;
@@ -85,8 +84,11 @@ class DequeStack
 
     public long pop()
     {
-    	long toPop = queArray[top--];
+    	System.out.println("Entering pop(). top = " + top);
+    	long toPop = queArray[top];
+    	top--;
     	removeRight();
+    	//System.out.println(toPop);
     	return toPop;
     }
 }
@@ -95,15 +97,6 @@ class DequeStackApp
 {
 	public static void main (String[] args)
 	{
-		DequeStack theStack = new DequeStack(5);
-		theStack.push(5);
-		theStack.push(4);
-		theStack.push(3);
 
-		System.out.println(theStack.pop());
-
-		System.out.println(theStack.peek());
-
-		theStack.display();
 	}
 }
